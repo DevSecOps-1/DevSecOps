@@ -13,9 +13,10 @@ This repository contains YAML configurations for deploying a sample application 
 ### 1. Create Project (Namespace)
 
 
-## oc apply -f project.yaml
+### command: oc apply -f project.yaml
 
 ### project.yaml:
+```sh
 apiVersion: project.openshift.io/v1
 kind: Project
 metadata:
