@@ -12,7 +12,6 @@ This repository contains YAML configurations for deploying a sample application 
 
 ### 1. Create Project (Namespace)
 
-
 ### command: oc apply -f project.yaml
 
 ### project.yaml:
@@ -22,3 +21,4 @@ kind: Project
 metadata:
   name: my-app-project
 
+### 2. Create DeploymentConfig
