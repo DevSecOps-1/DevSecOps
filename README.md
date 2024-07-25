@@ -12,7 +12,7 @@ This repository contains YAML configurations for deploying a sample application 
 
 ### 1. Create Project (Namespace)
 
-### command: ***oc apply -f project.yaml***
+command: ***oc apply -f project.yaml***
 
 ### project.yaml:
 ```sh
@@ -23,7 +23,7 @@ metadata:
 ```
 ### 2. Create DeploymentConfig
 
-### command: ***oc apply -f deploymentconfig.yaml***
+command: ***oc apply -f deploymentconfig.yaml***
 
 ### deploymentconfig.yaml
 ```sh
@@ -70,7 +70,7 @@ spec:
 
 ### 3. Create Service
 
-### command: ***oc apply -f service.yaml***
+command: ***oc apply -f service.yaml***
 
 ### service.yaml:
 ```sh
@@ -91,7 +91,7 @@ spec:
 
 ### 4. Create Route
 
-### command: ***oc apply -f route.yaml***
+command: ***oc apply -f route.yaml***
 
 ### route.yaml:
 ```sh
@@ -110,7 +110,7 @@ spec:
 ```
 ### 5. Create ConfigMap (Optional)
 
-### command: ***oc apply -f configmap.yaml***
+command: ***oc apply -f configmap.yaml***
 
 ### configmap.yaml:
 ```sh
@@ -124,7 +124,7 @@ data:
 ```
 
 ### 6. Create Secret (Optional)
-### command: ***oc apply -f secret.yaml***
+command: ***oc apply -f secret.yaml***
 
 ### secret.yaml:
 ```sh
@@ -140,7 +140,7 @@ data:
 
 ### 7. Create PersistentVolumeClaim (Optional)
 
-### command: ***oc apply -f pvc.yaml***
+command: ***oc apply -f pvc.yaml***
 ### pvc.yaml:
 ```sh
 apiVersion: v1
@@ -158,7 +158,7 @@ spec:
 
 ### 8. Create Horizontal Pod Autoscaler (Optional)
 
-### command: ***oc apply -f hpa.yaml***
+command: ***oc apply -f hpa.yaml***
 
 ### hpa.yaml:
 ```sh
