@@ -1,4 +1,4 @@
-# OpenShift Application Deployment
+# Application Deployment in OpenShift (PFC)
 
 This repository contains YAML configurations for deploying a sample application in an OpenShift cluster. The configuration includes Project (Namespace), DeploymentConfig, Service, Route, ConfigMap, Secret, PersistentVolumeClaim, and Horizontal Pod Autoscaler.
 
