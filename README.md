@@ -270,11 +270,32 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
 
 
 ### 5. Infrastructure as Code (IaC)
-Component: ***Terraform, Ansible**
+Component: **Terraform, Ansible**
 
 **Dependencies:**
 - IaC tools (Terraform, Ansible)
 - Access to cloud providers or infrastructure APIs
+
+
+### 6. SonarQube
+SonarQube is used for continuous inspection of code quality and security.
+
+**Dependencies:** 
+- Java (JDK 11 or newer)
+
+
+### 7. OWASP (Open Web Application Security Project)
+OWASP provides tools and resources for improving software security. Key tools include OWASP Dependency-Check and OWASP ZAP.
+
+**Dependencies:** 
+- Java (JDK 8 or newer)
+
+
+### 3. Nexus Repository
+Nexus Repository is used for managing artifacts and dependencies.
+
+**Dependencies:** 
+- Java (JDK 11 or newer)
 
 ***Summary:**
 1. Set Up VCS: Install Git, configure repositories.
@@ -282,3 +303,7 @@ Component: ***Terraform, Ansible**
 3. Containerization: Install Docker, build and push images, deploy using Kubernetes/OpenShift.
 4. Monitoring/Logging: Install Prometheus, Grafana, ELK Stack; set up dashboards.
 5. IaC: Install Terraform and Ansible, write and apply configurations.
+6. SonarQube: Configure SonarQube for code quality analysis. Integrate with Jenkins or GitHub Actions for automated code quality checks.
+7. OWASP: Use OWASP tools like Dependency-Check for dependency vulnerabilities and ZAP for security scans. Integrate these tools into
+
+
