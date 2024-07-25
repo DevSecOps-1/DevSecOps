@@ -12,8 +12,10 @@ This repository contains YAML configurations for deploying a sample application 
 
 ### 1. Create Project (Namespace)
 
-command: ***oc apply -f project.yaml***
-
+command: 
+```sh
+oc apply -f project.yaml***
+```
 ### project.yaml:
 ```sh
 apiVersion: project.openshift.io/v1
@@ -435,17 +437,6 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
     ```sh
     oc rollout history dc/<deployment-config-name>
     ```
-
-- **Using Kubernetes:**
-  - **Rollback a deployment:**
-    ```sh
-    kubectl rollout undo deployment/<deployment-name>
-    ```
-  - **View rollout history:**
-    ```sh
-    kubectl rollout history deployment/<deployment-name>
-    ```
-
 ### 2. Database Rollback
 
 - **Using Migration Tools:**
@@ -481,7 +472,7 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
   - Run tests locally or in staging environments as needed.
 
 - **Rollbacks:**
-  - **Application**: Use OpenShift or Kubernetes commands to rollback deployments.
+  - **Application**: Use OpenShift commands to rollback deployments.
   - **Database**: Use migration tools or restore from backups.
   - **Infrastructure**: Apply previous Terraform states or manually revert changes.
 
