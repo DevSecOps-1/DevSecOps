@@ -190,14 +190,12 @@ A rollout updates the deployment to a new version. This can be done by changing 
 ### Update DeploymentConfig
 
 To update the deployment, modify the ***image*** field in the ***DeploymentConfig***:
-
-### Apply the changes:
-### command: ***oc apply -f deploymentconfig.yaml***
+Apply the changes:
+command: ***oc apply -f deploymentconfig.yaml***
 
 ### Monitor Rollout
 You can monitor the rollout status using:
-
-### command: ***oc rollout status dc/my-app-deployment -n my-app-project***
+command: ***oc rollout status dc/my-app-deployment -n my-app-project***
 
 
 ======================================= **Rollback** =========================================
