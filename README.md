@@ -326,13 +326,6 @@ Nexus Repository is used for managing artifacts and dependencies.
 - Java (JDK 11 or newer)
 
 
-**Monitoring and Logging**
-- Component: Prometheus, Grafana, ELK Stack
-
-**Dependencies:**
-Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
-
-
 **Summary:**
 1. Set Up VCS: Install Git, configure repositories.
 2. CI/CD: Install and configure Jenkins, GitLab CI, or GitHub Actions.
