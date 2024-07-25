@@ -229,7 +229,57 @@ Alternatively, you can rollback to the previous revision:
 
 ***oc rollout undo dc/my-app-deployment -n my-app-project***
 
-
-### Conclusion:
+### Note:
 
 This setup provides a basic but comprehensive deployment of an application in an OpenShift cluster. we can expand and customize it further based on project specific application requirements.
+===================================================================================
+
+### Required DevOps component, including dependencies.
+Setting up a DevOps pipeline involves configuring various components and tools to automate and manage the software development lifecycle. Below are the instructions for setting up key DevOps components, including their dependencies:
+
+### 1. Version Control System (VCS)
+
+## Git
+
+### Dependencies:
+
+- None, but a remote repository (e.g., GitHub, GitLab, Bitbucket) is often used.
+
+### 2. Continuous Integration/Continuous Deployment (CI/CD)
+
+Component: ***Jenkins, GitLab CI, GitHub Actions, Tekton***
+
+**Dependencies:**
+
+- CI/CD tool (Jenkins, GitLab Runner, etc.)
+- Access to code repositories
+
+### 3. Containerization and Orchestration
+
+Component: ***Docker, Kubernetes, OpenShift***
+
+**Dependencies:**
+- Docker Engine or Docker Desktop
+- Kubernetes or OpenShift cluster
+
+
+### 4. Monitoring and Logging
+Component: ***Prometheus, Grafana, ELK Stack***
+
+**Dependencies:**
+Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
+
+
+### 5. Infrastructure as Code (IaC)
+Component: ***Terraform, Ansible**
+
+**Dependencies:**
+- IaC tools (Terraform, Ansible)
+- Access to cloud providers or infrastructure APIs
+
+***Summary:**
+1. Set Up VCS: Install Git, configure repositories.
+2. CI/CD: Install and configure Jenkins, GitLab CI, or GitHub Actions.
+3. Containerization: Install Docker, build and push images, deploy using Kubernetes/OpenShift.
+4. Monitoring/Logging: Install Prometheus, Grafana, ELK Stack; set up dashboards.
+5. IaC: Install Terraform and Ansible, write and apply configurations.
