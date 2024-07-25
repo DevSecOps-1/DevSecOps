@@ -182,6 +182,60 @@ spec:
         averageUtilization: 80
 ```
 
+
+
+===================================##Rollout###========================================================
+
+A rollout updates the deployment to a new version. This can be done by changing the image or configuration.
+
+Update DeploymentConfig
+
+To update the deployment, modify the ###image### field in the ###DeploymentConfig###:
+
+
+Apply the changes:
+
+Apply the changes:
+
+
+
+Monitor Rollout
+
+You can monitor the rollout status using:
+
+oc rollout status dc/my-app-deployment -n my-app-project
+
+
+Rollback
+
+A rollback reverts the deployment to a previous version.
+
+View Previous Rollouts
+
+List the rollout history to find the revision number you want to roll back to:
+
+oc rollout history dc/my-app-deployment -n my-app-project
+
+This command will display a list of revisions. For example:
+
+```sh
+deploymentconfigs.apps.openshift.io "my-app-deployment"
+REVISION        STATUS          CAUSE
+1               Complete        config change
+2               Complete        config change
+```
+
+Rollback to a Specific Revision
+
+Rollback to a specific revision using the oc rollout undo command:
+
+oc rollout undo dc/my-app-deployment --to-revision=1 -n my-app-project
+
+Alternatively, you can rollback to the previous revision:
+
+oc rollout undo dc/my-app-deployment -n my-app-project
+
+
 ### Conclusion:
 
 This setup provides a basic but comprehensive deployment of an application in an OpenShift cluster. You can expand and customize it further based on your specific application requirements.
