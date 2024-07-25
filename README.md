@@ -20,5 +20,5 @@ apiVersion: project.openshift.io/v1
 kind: Project
 metadata:
   name: my-app-project
-
+sh
 ### 2. Create DeploymentConfig
