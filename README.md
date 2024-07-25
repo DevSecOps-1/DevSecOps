@@ -316,17 +316,173 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
 
 ============================================================================================
 
-# Performing Rollbacks
+# Running Automated Tests and Performing Rollbacks
 
-## a. Application Rollback
+## Running Automated Tests
 
-### Using OpenShift
+### 1. Unit Tests
 
-**Rollback a deployment using `oc`:**
-  ```sh
-  oc rollout undo dc/<deployment-config-name>
-  ```
-**- View deployment history:**
-  ```sh
-  oc rollout history dc/<deployment-config-name>
-  ```
+- **CI/CD Pipeline Integration:**
+  - **Jenkins:**
+    Add a test stage to your `Jenkinsfile`:
+    ```groovy
+    stage('Test') {
+      steps {
+        sh 'make test'   // Replace with your test command
+      }
+    }
+    ```
+  - **GitLab CI:**
+    Define test jobs in your `.gitlab-ci.yml`:
+    ```yaml
+    test:
+      script:
+        - make test   # Replace with your test command
+    ```
+  - **GitHub Actions:**
+    Create a job in your workflow file:
+    ```yaml
+    jobs:
+      test:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+          - name: Run tests
+            run: make test   # Replace with your test command
+    ```
+
+- **Run Tests Locally:**
+  Use your preferred testing framework (e.g., `pytest`, `JUnit`) to run tests on your local development environment.
+
+### 2. Integration Tests
+
+- **CI/CD Pipeline Integration:**
+  - **Jenkins:**
+    Add an integration test stage to your `Jenkinsfile`:
+    ```groovy
+    stage('Integration Test') {
+      steps {
+        sh 'make integration-test'   // Replace with your integration test command
+      }
+    }
+    ```
+  - **GitLab CI:**
+    Add integration test jobs in your `.gitlab-ci.yml`:
+    ```yaml
+    integration_test:
+      script:
+        - make integration-test   # Replace with your integration test command
+    ```
+  - **GitHub Actions:**
+    Define integration test steps in your workflow file:
+    ```yaml
+    jobs:
+      integration-test:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+          - name: Run integration tests
+            run: make integration-test   # Replace with your integration test command
+    ```
+
+- **Run Integration Tests Manually:**
+  Execute integration tests in a staging environment to ensure they interact correctly with other services.
+
+### 3. End-to-End Tests
+
+- **CI/CD Pipeline Integration:**
+  - **Jenkins:**
+    Add an end-to-end test stage to your `Jenkinsfile`:
+    ```groovy
+    stage('End-to-End Test') {
+      steps {
+        sh 'make e2e-test'   // Replace with your end-to-end test command
+      }
+    }
+    ```
+  - **GitLab CI:**
+    Add end-to-end test jobs in your `.gitlab-ci.yml`:
+    ```yaml
+    e2e_test:
+      script:
+        - make e2e-test   # Replace with your end-to-end test command
+    ```
+  - **GitHub Actions:**
+    Include end-to-end test steps in your workflow file:
+    ```yaml
+    jobs:
+      e2e-test:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+          - name: Run end-to-end tests
+            run: make e2e-test   # Replace with your end-to-end test command
+    ```
+=====================================================================================
+## Performing Rollbacks
+
+### 1. Application Rollback
+
+- **Using OpenShift:**
+  - **Rollback a deployment:**
+    ```sh
+    oc rollout undo dc/<deployment-config-name>
+    ```
+  - **View deployment history:**
+    ```sh
+    oc rollout history dc/<deployment-config-name>
+    ```
+
+- **Using Kubernetes:**
+  - **Rollback a deployment:**
+    ```sh
+    kubectl rollout undo deployment/<deployment-name>
+    ```
+  - **View rollout history:**
+    ```sh
+    kubectl rollout history deployment/<deployment-name>
+    ```
+
+### 2. Database Rollback
+
+- **Using Migration Tools:**
+  - **Flyway:**
+    Rollback using Flyway commands:
+    ```sh
+    flyway undo
+    ```
+  - **Liquibase:**
+    Rollback using Liquibase commands:
+    ```sh
+    liquibase rollbackCount <number-of-steps>
+    ```
+
+- **Manual Rollback:**
+  - Restore from backups if no automated tool is used.
+
+### 3. Infrastructure Rollback
+
+- **Using Terraform:**
+  - **Reapply the last known good state:**
+    ```sh
+    terraform apply
+    ```
+
+- **Manual Changes:**
+  - Revert changes manually through your infrastructure management tools or console.
+
+## Summary
+
+- **Automated Tests:**
+  - Integrate unit, integration, and end-to-end tests into your CI/CD pipelines.
+  - Run tests locally or in staging environments as needed.
+
+- **Rollbacks:**
+  - **Application**: Use OpenShift or Kubernetes commands to rollback deployments.
+  - **Database**: Use migration tools or restore from backups.
+  - **Infrastructure**: Apply previous Terraform states or manually revert changes.
+
+Adjust the instructions based on your specific tools and environment for a more tailored approach.
