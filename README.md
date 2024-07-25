@@ -230,8 +230,7 @@ Alternatively, you can rollback to the previous revision:
 ***oc rollout undo dc/my-app-deployment -n my-app-project***
 
 **Note:**
-
-****This setup provides a basic but comprehensive deployment of an application in an OpenShift cluster. we can expand and customize it further based on project specific application requirements.****
+- This setup provides a basic but comprehensive deployment of an application in an OpenShift cluster. we can expand and customize it further based on project specific application requirements.
 ===================================================================================
 
 ### Required DevOps component, including dependencies.
