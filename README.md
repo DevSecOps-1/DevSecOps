@@ -305,7 +305,7 @@ Nexus Repository is used for managing artifacts and dependencies.
 Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
 
 
-***Summary:**
+**Summary:**
 1. Set Up VCS: Install Git, configure repositories.
 2. CI/CD: Install and configure Jenkins, GitLab CI, or GitHub Actions.
 3. Containerization: Install Docker, build and push images, deploy using Kubernetes/OpenShift.
@@ -314,4 +314,19 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
 6. SonarQube: Configure SonarQube for code quality analysis. Integrate with Jenkins or GitHub Actions for automated code quality checks.
 7. OWASP: Use OWASP tools like Dependency-Check for dependency vulnerabilities and ZAP for security scans. Integrate these tools into
 
+==============================================================================================
 
+# Performing Rollbacks
+
+## a. Application Rollback
+
+### Using OpenShift
+
+- **Rollback a deployment using `oc`:**
+  ```sh
+  oc rollout undo dc/<deployment-config-name>
+  ```
+**- View deployment history:**
+  ```sh
+  oc rollout history dc/<deployment-config-name>
+  ```
