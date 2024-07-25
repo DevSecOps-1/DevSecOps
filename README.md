@@ -208,7 +208,7 @@ View Previous Rollouts
 
 List the rollout history to find the revision number you want to roll back to:
 
-oc rollout history dc/my-app-deployment -n my-app-project
+command: ***oc rollout history dc/my-app-deployment -n my-app-project***
 
 This command will display a list of revisions. For example:
 
@@ -219,17 +219,17 @@ REVISION        STATUS          CAUSE
 2               Complete        config change
 ```
 
-Rollback to a Specific Revision
+### Rollback to a Specific Revision
 
 Rollback to a specific revision using the oc rollout undo command:
 
-oc rollout undo dc/my-app-deployment --to-revision=1 -n my-app-project
+***oc rollout undo dc/my-app-deployment --to-revision=1 -n my-app-project***
 
 Alternatively, you can rollback to the previous revision:
 
-oc rollout undo dc/my-app-deployment -n my-app-project
+***oc rollout undo dc/my-app-deployment -n my-app-project***
 
 
 ### Conclusion:
 
-This setup provides a basic but comprehensive deployment of an application in an OpenShift cluster. You can expand and customize it further based on your specific application requirements.
+This setup provides a basic but comprehensive deployment of an application in an OpenShift cluster. we can expand and customize it further based on project specific application requirements.
