@@ -193,7 +193,7 @@ To update the deployment, modify the ***image*** field in the ***DeploymentConfi
 
 **Apply the changes**:
 
-**command**: ***oc apply -f deploymentconfig.yaml***
+command: ***oc apply -f deploymentconfig.yaml***
 
 ### Monitor Rollout
 You can monitor the rollout status using:
