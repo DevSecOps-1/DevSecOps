@@ -314,7 +314,7 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
 6. SonarQube: Configure SonarQube for code quality analysis. Integrate with Jenkins or GitHub Actions for automated code quality checks.
 7. OWASP: Use OWASP tools like Dependency-Check for dependency vulnerabilities and ZAP for security scans. Integrate these tools into
 
-==============================================================================================
+============================================================================================
 
 # Performing Rollbacks
 
@@ -322,7 +322,7 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
 
 ### Using OpenShift
 
-- **Rollback a deployment using `oc`:**
+**Rollback a deployment using `oc`:**
   ```sh
   oc rollout undo dc/<deployment-config-name>
   ```
