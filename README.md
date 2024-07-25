@@ -291,11 +291,19 @@ OWASP provides tools and resources for improving software security. Key tools in
 - Java (JDK 8 or newer)
 
 
-### 3. Nexus Repository
+### 8. Nexus Repository
 Nexus Repository is used for managing artifacts and dependencies.
 
 **Dependencies:** 
 - Java (JDK 11 or newer)
+
+
+**Monitoring and Logging**
+- Component: Prometheus, Grafana, ELK Stack
+
+**Dependencies:**
+Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
+
 
 ***Summary:**
 1. Set Up VCS: Install Git, configure repositories.
