@@ -20,5 +20,48 @@ apiVersion: project.openshift.io/v1
 kind: Project
 metadata:
   name: my-app-project
-sh
+```
 ### 2. Create DeploymentConfig
+
+### command: oc apply -f deploymentconfig.yaml
+```sh
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: my-app-deployment
+  namespace: my-app-project
+spec:
+  replicas: 3
+  selector:
+    app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-container
+        image: my-app-image:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: ENV_VAR_NAME
+          value: "value"
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      containerNames:
+      - my-app-container
+      from:
+        kind: ImageStreamTag
+        name: my-app-image:latest
+```
