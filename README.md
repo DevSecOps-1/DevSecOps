@@ -247,11 +247,15 @@ REVISION        STATUS          CAUSE
 
 Rollback to a specific revision using the oc rollout undo command:
 
-***oc rollout undo dc/my-app-deployment --to-revision=1 -n my-app-project***
+```sh
+oc rollout undo dc/my-app-deployment --to-revision=1 -n my-app-project
+```
 
 Alternatively, you can rollback to the previous revision:
 
-***oc rollout undo dc/my-app-deployment -n my-app-project***
+```sh
+oc rollout undo dc/my-app-deployment -n my-app-project
+```
 
 **Note:**
 - This setup provides a basic but comprehensive deployment of an application in an OpenShift cluster. we can expand and customize it further based on project specific application requirements.
@@ -356,25 +360,6 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
       }
     }
     ```
-  - **GitLab CI:**
-    Define test jobs in your `.gitlab-ci.yml`:
-    ```yaml
-    test:
-      script:
-        - make test   # Replace with your test command
-    ```
-  - **GitHub Actions:**
-    Create a job in your workflow file:
-    ```yaml
-    jobs:
-      test:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v3
-          - name: Run tests
-            run: make test   # Replace with your test command
-    ```
 
 - **Run Tests Locally:**
   Use your preferred testing framework (e.g., `pytest`, `JUnit`) to run tests on your local development environment.
@@ -391,25 +376,6 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
       }
     }
     ```
-  - **GitLab CI:**
-    Add integration test jobs in your `.gitlab-ci.yml`:
-    ```yaml
-    integration_test:
-      script:
-        - make integration-test   # Replace with your integration test command
-    ```
-  - **GitHub Actions:**
-    Define integration test steps in your workflow file:
-    ```yaml
-    jobs:
-      integration-test:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v3
-          - name: Run integration tests
-            run: make integration-test   # Replace with your integration test command
-    ```
 
 - **Run Integration Tests Manually:**
   Execute integration tests in a staging environment to ensure they interact correctly with other services.
@@ -425,25 +391,6 @@ Monitoring and logging tools (Prometheus, Grafana, Elasticsearch)
         sh 'make e2e-test'   // Replace with your end-to-end test command
       }
     }
-    ```
-  - **GitLab CI:**
-    Add end-to-end test jobs in your `.gitlab-ci.yml`:
-    ```yaml
-    e2e_test:
-      script:
-        - make e2e-test   # Replace with your end-to-end test command
-    ```
-  - **GitHub Actions:**
-    Include end-to-end test steps in your workflow file:
-    ```yaml
-    jobs:
-      e2e-test:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v3
-          - name: Run end-to-end tests
-            run: make e2e-test   # Replace with your end-to-end test command
     ```
 =====================================================================================
 ## Performing Rollbacks
