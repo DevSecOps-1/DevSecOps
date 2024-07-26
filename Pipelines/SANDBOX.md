@@ -1,5 +1,5 @@
 
-## Staging Pipeline (Sample - PoC)
+## SANDBOX Pipeline (Sample - PoC)
 
 ```sh
 pipeline {
