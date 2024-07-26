@@ -2,6 +2,7 @@
 ## Staging Pipeline
 
 ```sh
+
 pipeline {
     agent any
 
@@ -112,4 +113,5 @@ pipeline {
         }
     }
 }
+
 ```
