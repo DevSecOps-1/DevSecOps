@@ -217,11 +217,17 @@ To update the deployment, modify the ***image*** field in the ***DeploymentConfi
 
 **Apply the changes**:
 
-command: ***oc apply -f deploymentconfig.yaml***
+command: 
+```sh
+oc apply -f deploymentconfig.yaml
+```
 
 ### Monitor Rollout
 You can monitor the rollout status using:
-command: ***oc rollout status dc/my-app-deployment -n my-app-project***
+command: 
+```sh 
+oc rollout status dc/my-app-deployment -n my-app-project
+```
 
 
 ======================================= **Rollback** =========================================
@@ -232,7 +238,10 @@ View Previous Rollouts
 
 List the rollout history to find the revision number you want to roll back to:
 
-command: ***oc rollout history dc/my-app-deployment -n my-app-project***
+command: 
+```sh 
+oc rollout history dc/my-app-deployment -n my-app-project
+```
 
 This command will display a list of revisions. For example:
 
