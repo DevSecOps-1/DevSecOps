@@ -1,5 +1,5 @@
 
-## Staging Pipeline
+## Staging Pipeline (Sample - PoC)
 
 ```sh
 pipeline {
@@ -9,6 +9,7 @@ pipeline {
         AWS_REGION = 'us-west-2'
         ECR_REPO = 'your-ecr-repo-name'
         IMAGE_TAG = "your-image-tag:${env.BUILD_NUMBER}"
+        AWS_ACCOUNT_ID = 'your-aws-account-id'  // Set your AWS account ID
     }
 
     stages {
@@ -42,55 +43,42 @@ pipeline {
             }
         }
 
-        stage('Integration Tests') {
+        stage('Build Image') {
             steps {
-                sh 'mvn verify -Pintegration-tests'  // Run integration tests
-            }
-        }
-
-        stage('Smoke Tests') {
-            steps {
-                sh 'mvn verify -Psmoke-tests'  // Run smoke tests
-            }
-        }
-
-        stage('Regression Tests') {
-            steps {
-                sh 'mvn verify -Pregression-tests'  // Run regression tests
+                script {
+                    def image = docker.build("${ECR_REPO}:${IMAGE_TAG}")
+                    sh 'docker tag ${image.id} ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}'
+                }
             }
         }
 
         stage('Image Scan') {
             steps {
-                sh 'image-scanner-tool scan --image myapp:latest'  // Replace with your image scanner tool command
+                sh 'image-scanner-tool scan --image ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}'  // Replace with your image scanner tool command
             }
         }
 
         stage('Push Image to ECR') {
             steps {
                 script {
-                    def image = docker.build("${ECR_REPO}:${IMAGE_TAG}")
                     sh "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
-                    image.push()
+                    sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}"
                 }
             }
         }
 
-        stage('Deploy to Staging') {
+        stage('Pull Image from ECR') {
             steps {
-                sh 'deploy-to-staging.sh'  // Replace with your deployment script for staging
+                script {
+                    sh "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+                    sh "docker pull ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}"
+                }
             }
         }
 
-        stage('Staging Tests') {
+        stage('Deploy to Sandbox') {
             steps {
-                sh 'mvn verify -Pstaging-tests'  // Replace with your staging test suite
-            }
-        }
-
-        stage('DAST') {
-            steps {
-                sh 'dast-tool scan'  // Replace with your DAST tool command
+                sh 'deploy-to-sandbox.sh'  // Replace with your deployment script for sandbox
             }
         }
     }
@@ -98,7 +86,7 @@ pipeline {
     post {
         always {
             junit '**/target/surefire-reports/*.xml'  // Collect test reports
-            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true  // Archive built artifacts
+            archiveArtifacts artifacts: '**/target/*.jar'  // Archive built artifacts
         }
         success {
             emailext to: 'team@example.com',

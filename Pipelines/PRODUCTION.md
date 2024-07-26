@@ -1,7 +1,3 @@
-
-## Staging Pipeline
-
-```sh
 pipeline {
     agent any
 
@@ -76,15 +72,9 @@ pipeline {
             }
         }
 
-        stage('Deploy to Staging') {
+        stage('Deploy to Production') {
             steps {
-                sh 'deploy-to-staging.sh'  // Replace with your deployment script for staging
-            }
-        }
-
-        stage('Staging Tests') {
-            steps {
-                sh 'mvn verify -Pstaging-tests'  // Replace with your staging test suite
+                sh 'deploy-to-production.sh'  // Replace with your deployment script for production
             }
         }
 
@@ -112,4 +102,3 @@ pipeline {
         }
     }
 }
-```
