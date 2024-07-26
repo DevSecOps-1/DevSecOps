@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-app-secret
+  namespace: my-app-project
+type: Opaque
+data:
+  secret-key: c2VjcmV0LXZhbHVl  # base64 encoded value
