@@ -35,7 +35,7 @@ oc apply -f deploymentconfig.yaml
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  name: my-app-deployment
+  name: my-app-blue-deply
   namespace: my-app-project
 spec:
   replicas: 3
@@ -61,6 +61,18 @@ spec:
         env:
         - name: ENV_VAR_NAME
           value: "value"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
   triggers:
   - type: ConfigChange
   - type: ImageChange
